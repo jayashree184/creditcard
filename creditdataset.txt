@@ -1,0 +1,91 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv("C:/Users/CSE WPT/Downloads/archive (4)/iris.csv")
+df
+
+df.describe()
+
+df.isnull().sum()
+
+df.shape
+
+df_setosa=df.loc[df['species']]
+
+import pandas as pd
+df=pd.read_csv("C:/Users/CSE WPT/Downloads/titanic/test.csv")
+df
+
+import pandas as pd
+df=pd.read_csv("C:/Users/CSE WPT/Downloads/titanic/test.csv")
+df.describe()
+
+df.info()
+
+df.isnull().sum()
+
+import missingno as msno
+msno.bar(df)
+msno.matrix(df)
+
+df.dropna(inplace=True)
+df.isnull().sum()
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+df=pd.read_csv("C:/Users/CSE WPT/Downloads/archive(11)/BankChurners.csv")
+df
+
+sns.scatterplot(x='Income_Category',y='Customer_Age',data=df)
+plt.show()
+
+sns.boxplot(x='Income_Category',data=df)
+plt.show()
+
+card_approval_df=pd.read_csv("C:/Users/CSE WPT/Downloads/archive(12)/clean_dataset.csv")
+card_approval_df
+
+card_approval_df.info()
+
+card_approval_df.duplicated().sum()
+
+import pandas as pd
+import seaborn as sns
+carddf=pd.read_csv("C:/Users/CSE WPT/Downloads/archive(12)/clean_dataset.csv")
+carddf.head()
+
+carddf.info()
+
+carddf[['Age','Debt','YearsEmployed','CreditScore','Income']].describe()
+
+sns.histplot(carddf.Age,kde=True)
+
+sns.countplot(carddf.Gender)
+
+sns.countplot(carddf.BankCustomer)
+
+sns.countplot(carddf.Ethnicity)
+
+sns.countplot(carddf.Approved)
+
+carddf[['Age','Debt','YearsEmployed','CreditScore','Income']].corr()
+
+from matplotlib import pyplot as plt
+sns.scatterplot(carddf.YearsEmployed,carddf.Income)
+plt.ylim(0,2000)
+
+carddf.groupby(by='Approved').agg('mean')[['Age','Debt','YearsEmployed','CreditScore','Income']]
+
+plt.figure(figsize=(12,8))
+sns.kdeplot(data=carddf,x='Age',hue='Approved',fill=True)
+
+sns.countplot(data=carddf,x='Approved',hue='Gender')
+
+all=pd.crosstab(carddf.Gender,carddf.Approved,margins=True)['All']
+pd.crosstab(carddf.Gender,carddf.Approved).divide(all,axis=0).dropna()
+
+sns.pairplot(data=carddf[['Age','Debt','YearsEmployed','CreditScore','Income']])
+
